@@ -107,6 +107,7 @@
 }
 
 
+// aj
 // flex
 @mixin displayFlex($display: flex, $justify: center, $align: center) {
 	@if $display==flex {
@@ -116,4 +117,47 @@
 	}
 	@include justify-content($justify);
 	@include align-items($align);
+}
+// Flexbox display
+@mixin flexbox() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+@mixin inline-flex() {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+@mixin justify-content($justify: center) {
+	-webkit-justify-content: $justify;
+	-moz-justify-content: $justify;
+	-ms-justify-content: $justify;
+	justify-content: $justify;
+	-ms-flex-pack: $justify;
+}
+@mixin align-items($align: center) {
+	-webkit-align-items: $align;
+	-moz-align-items: $align;
+	-ms-align-items: $align;
+	align-items: $align;
+}
+		
+@mixin box-shadow($shadows...) {
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+@mixin pseudoBase($pos: absolute, $display: block) {
+	content: "";
+	display: $display;
+	position: $pos;
+}
+@mixin itemSize($w, $h) {
+	width: $w;
+	height: $h;
 }
