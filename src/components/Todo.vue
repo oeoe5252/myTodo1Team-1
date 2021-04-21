@@ -24,7 +24,6 @@
 <style lang="scss" scoped>
     .section-todo {
         position: relative;
-        height: 50vh;
         padding: 0 40px;
         background: url('~@/assets/images/bg-morning.jpg') no-repeat;
         background-size: cover;

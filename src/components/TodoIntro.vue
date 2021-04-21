@@ -27,7 +27,6 @@
         color: #fff;
         font-size: 1.3em;
         line-height: 1.5em;
-        padding-top:30px;
         .todo-task {
             font-size:1.5em;
             line-height:1.5em;

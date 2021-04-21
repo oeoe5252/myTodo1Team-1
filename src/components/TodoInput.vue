@@ -12,5 +12,7 @@
 </script>
 
 <style scoped>
-
+.form-item {
+    padding-bottom:30px;
+}
 </style>
