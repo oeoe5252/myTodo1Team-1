@@ -1,3 +1,32 @@
 <template>
-      <div>헤더, 인사, todoList현황, input필요</div>
+    <section class="section-todo">
+        <TodoHeader/>
+        <TodoIntro/>
+        <TodoInput/>
+    </section>
 </template>
+
+<script>
+    import TodoHeader from "@/components/TodoHeader";
+    import TodoIntro from "@/components/TodoIntro";
+    import TodoInput from "@/components/TodoInput";
+
+    export default ({
+        name: 'Todo',
+        components: {
+            TodoHeader,
+            TodoIntro,
+            TodoInput,
+        }
+    })
+</script>
+
+<style lang="scss" scoped>
+    .section-todo {
+        position: relative;
+        padding: 0 40px;
+        background: url('~@/assets/images/bg-morning.jpg') no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
