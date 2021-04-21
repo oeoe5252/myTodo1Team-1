@@ -106,3 +106,14 @@
 	text-overflow:ellipsis;
 }
 
+
+// flex
+@mixin displayFlex($display: flex, $justify: center, $align: center) {
+	@if $display==flex {
+		@include flexbox();
+	} @else {
+		@include inline-flex();
+	}
+	@include justify-content($justify);
+	@include align-items($align);
+}
