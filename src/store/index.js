@@ -19,7 +19,6 @@ export default new Vuex.Store({
       countOfComplete: state => {
             let count = 0;
             state.writeList.forEach(item=>{
-
                   if(!item.isComplete) count++
             })
             return count

@@ -67,10 +67,10 @@ input[type="password"]{
 
 input[type="text"]:hover,
 input[type="password"]:hover,
-textarea:hover{outline:none;background-color: rgba(255, 255, 255, 0.4);}
+textarea:hover,
 input[type="text"]:focus,
 input[type="password"]:focus,
-textarea:focus {outline:none;background-color:#fff;}
+textarea:focus {outline:none;background-color: rgba(255, 255, 255, 0.4);}
 
 input[type="text"]::-ms-clear{width:0;height:0;display:none;}
 

@@ -3,9 +3,8 @@
 @import '../common/variable',
 '../common/mixin';
 
-.header {
-  padding:20px 0;
-  display:flex;
-  justify-content: space-between;
-  color:#fff;
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
