@@ -1,8 +1,10 @@
 <template>
-    <section class="section-todo">
-        <TodoHeader/>
-        <TodoIntro/>
-        <TodoInput/>
+    <section class="section-todo" v-bind:class="{ dark : displayMode }">
+        <div class="inner">
+            <TodoHeader/>
+            <TodoIntro/>
+            <TodoInput/>
+        </div>
     </section>
 </template>
 
@@ -10,6 +12,9 @@
     import TodoHeader from "@/components/TodoHeader";
     import TodoIntro from "@/components/TodoIntro";
     import TodoInput from "@/components/TodoInput";
+    import NowDate from "@/components/module/NowDate.js"
+
+    const nowDate = new NowDate();
 
     export default ({
         name: 'Todo',
@@ -17,6 +22,11 @@
             TodoHeader,
             TodoIntro,
             TodoInput,
+        },
+        data() {
+            return {
+                displayMode: nowDate.getTransDisplay()
+            }
         }
     })
 </script>
@@ -24,9 +34,12 @@
 <style lang="scss" scoped>
     .section-todo {
         position: relative;
-        padding: 0 40px;
-        background: url('~@/assets/images/bg-morning.jpg') no-repeat;
+        background: url('~@/assets/images/bg-morning.jpg') center no-repeat;
         background-size: cover;
-        background-position: center;
+
+        &.dark {
+            background: url('~@/assets/images/bg-evening.jpg') center no-repeat;
+            background-size: cover;
+        }
     }
 </style>

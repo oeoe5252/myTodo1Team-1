@@ -10,14 +10,27 @@
 </template>
 
 <script>
+    import NowDate from "@/components/module/NowDate.js"
+
+    const nowDate = new NowDate();
+
     export default {
         name: "TodoIntro",
+        computed: {
+            taskCount() {
+                return this.$store.getters.countOfComplete
+            },
+            taskTotal() {
+                return this.$store.getters.totalListCount
+            }
+        },
         data() {
             return {
-                hello: 'Good Morning',
-                taskCount: 2,
-                taskTotal: 4,
+                hello: ''
             }
+        },
+        mounted() {
+            this.hello = nowDate.getTransHour();
         }
     }
 </script>
@@ -28,18 +41,19 @@
         font-size: 1.3em;
         line-height: 1.5em;
         .todo-task {
-            font-size:1.5em;
-            line-height:1.5em;
-            padding:40px 0;
+            font-size: 1.5em;
+            line-height: 1.5em;
+            padding: 40px 0;
         }
         .task-count {
-            display:block;
-            line-height:1.5em;
+            display: block;
+            line-height: 1.5em;
             letter-spacing: 0.2em;
-            margin-top:10px;
+            margin-top: 10px;
+
             .focus {
                 font-weight: 600;
-                font-size:1.5em;
+                font-size: 1.5em;
             }
         }
     }

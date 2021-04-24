@@ -168,16 +168,12 @@ input[type=password] {
 
 input[type=text]:hover,
 input[type=password]:hover,
-textarea:hover {
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
+textarea:hover,
 input[type=text]:focus,
 input[type=password]:focus,
 textarea:focus {
   outline: none;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 input[type=text]::-ms-clear {
@@ -356,11 +352,10 @@ textarea:focus::-ms-input-placeholder {
   color: transparent;
 }
 
-.header {
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /*# sourceMappingURL=common.css.map */
