@@ -1,15 +1,15 @@
 <template>
     <div class="input-check type1">
-        <input 
+        <input
             :id="id"
             :name="name"
             type="checkbox"
             :checked="item.isComplete"
             @change="onChangeChecked" />
-        <label 
+        <label
             :for="id"
             class="label-legend"
-            :class="[{done: item.isComplete}]"> 
+            :class="[{done: item.isComplete}]">
             <span>{{msg}}</span> </label>
     </div>
 </template>
@@ -32,13 +32,20 @@ export default {
     },
     methods: {
         onChangeChecked: function(e) {
+              let playload = ""
             if( e.target.checked ) {
                 // state 상태 변경 필요
-                window.alert("checked true")
+                 playload = {
+                      key : this.item.writeDate,
+                      val : true
+                }
             }else {
-                // state 상태 변경 필요
-                window.alert("checked false")
+                 playload = {
+                      key : this.item.writeDate,
+                      val : false
+                }
             }
+             this.$store.dispatch('updateList',playload)
         }
     }
 }
@@ -89,6 +96,6 @@ export default {
                 }
             }
         }
-        
+
     }
 </style>

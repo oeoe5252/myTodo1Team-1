@@ -6,9 +6,8 @@
 </template>
 
 <script>
-    import MyTodoList from "@/components/module/MyTodoList.js"
+    import MyTodoListWrite from "@/components/module/MyTodoListWrite.js"
 
-    const myTodo = new MyTodoList();
     export default {
         name: "TodoInput",
         data() {
@@ -20,10 +19,11 @@
             addList() {
                 if (this.todoData !== '') {
                     //데이터값 전송
-                    localStorage.setItem(this.todoData, myTodo.writeMydoList())
+                    new MyTodoListWrite(this.todoData).setLocalStorage();
+                    this.$store.dispatch('addList')
                     this.clearInput();
                 } else {
-                    alert('할일을 입력해주세요.')
+                    alert('할 일을 입력해주세요.')
                 }
             },
             clearInput() {
