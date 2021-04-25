@@ -2,11 +2,14 @@
     <div class="input-check type1">
         <input 
             :id="id"
+            :name="name"
             type="checkbox"
-            :name="name" />
+            :checked="item.isComplete"
+            @change="onChangeChecked" />
         <label 
             :for="id"
-            class="label-legend"> 
+            class="label-legend"
+            :class="[{done: item.isComplete}]"> 
             <span>{{msg}}</span> </label>
     </div>
 </template>
@@ -22,6 +25,20 @@ export default {
         },
         name: {
             type: String,
+        },
+        item: {
+            type: Object
+        }
+    },
+    methods: {
+        onChangeChecked: function(e) {
+            if( e.target.checked ) {
+                // state 상태 변경 필요
+                window.alert("checked true")
+            }else {
+                // state 상태 변경 필요
+                window.alert("checked false")
+            }
         }
     }
 }
@@ -36,6 +53,12 @@ export default {
                 font-size: 1rem;
                 line-height: 1.5rem;
                 margin-bottom: 0.5em;
+                 &.done {
+                    span {
+                        color: $grayC;
+                        text-decoration: line-through;
+                    }
+                }
                 &:before,
                 &:after {
                     @include pseudoBase();

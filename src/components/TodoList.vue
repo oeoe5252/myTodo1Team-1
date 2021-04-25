@@ -1,7 +1,7 @@
 <template>
     <ul class="todo-list">
         <li v-for="(item, index) of StateItems" :key="index">
-            <base-check :name="item.writeDate" :id="item.writeDate" :msg="item.content"></base-check>
+            <BaseCheck :name="`id-${item.writeDate}`" :id="`id-${item.writeDate}`" :msg="item.content" :item="item"></BaseCheck>
             <div class="util-wrap">
               <button class="btn-del" @click="clearItem(item.writeDate)"></button>
               <span class="item-date">
@@ -28,6 +28,9 @@ export default {
     methods: {
       clearItem(val) {
         window.alert( `${val} 삭제` )
+      },
+      changeFormat(val) {
+        console.log("===", val)
       }
     },
 }
@@ -52,7 +55,6 @@ export default {
         .btn-del {
           position: relative;
            @include icon-x();
-          // @include icon-x(10, #999, top);
         }
         .item-date {
           position: absolute;

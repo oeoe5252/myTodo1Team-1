@@ -1,21 +1,21 @@
 <template>
   <default-layout>
     <Todo />
-    <TodoList />
+    <TodoContent />
   </default-layout>
 </template>
 
 <script>
 import DefaultLayout from "@/layouts/DefaultLayout";
 import Todo from "@/components/Todo";
-import TodoList from "@/components/TodoList";
+import TodoContent from "@/components/TodoContent";
 
 export default {
   name: "App",
   components: {
     DefaultLayout,
     Todo,
-    TodoList,
+    TodoContent,
   }
 };
 </script>
