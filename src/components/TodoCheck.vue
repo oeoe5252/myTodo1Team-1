@@ -1,12 +1,15 @@
 <template>
     <div class="input-check type1">
-        <input 
+        <input
             :id="id"
+            :name="name"
             type="checkbox"
-            :name="name" />
-        <label 
+            :checked="item.isComplete"
+            @change="onChangeChecked" />
+        <label
             :for="id"
-            class="label-legend"> 
+            class="label-legend"
+            :class="[{done: item.isComplete}]">
             <span>{{msg}}</span> </label>
     </div>
 </template>
@@ -22,6 +25,27 @@ export default {
         },
         name: {
             type: String,
+        },
+        item: {
+            type: Object
+        }
+    },
+    methods: {
+        onChangeChecked: function(e) {
+              let playload = ""
+            if( e.target.checked ) {
+                // state 상태 변경 필요
+                 playload = {
+                      key : this.item.writeDate,
+                      val : true
+                }
+            }else {
+                 playload = {
+                      key : this.item.writeDate,
+                      val : false
+                }
+            }
+             this.$store.dispatch('updateList',playload)
         }
     }
 }
@@ -36,6 +60,12 @@ export default {
                 font-size: 1rem;
                 line-height: 1.5rem;
                 margin-bottom: 0.5em;
+                 &.done {
+                    span {
+                        color: $grayC;
+                        text-decoration: line-through;
+                    }
+                }
                 &:before,
                 &:after {
                     @include pseudoBase();
@@ -66,6 +96,6 @@ export default {
                 }
             }
         }
-        
+
     }
 </style>

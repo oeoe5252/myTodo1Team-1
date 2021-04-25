@@ -1,11 +1,11 @@
 <template>
     <ul class="todo-list">
         <li v-for="(item, index) of StateItems" :key="index">
-            <base-check :name="item.writeDate" :id="item.writeDate" :msg="item.content"></base-check>
+            <BaseCheck :name="`id-${item.writeDate}`" :id="`id-${item.writeDate}`" :msg="item.content" :item="item"></BaseCheck>
             <div class="util-wrap">
               <button class="btn-del" @click="clearItem(item.writeDate)"></button>
               <span class="item-date">
-                {{item.writeDate}}
+                {{changeFormat(item.writeDate)}}
               </span>
             </div>
         </li>
@@ -13,21 +13,31 @@
 </template>
 <script>
 import BaseCheck from '@/components/TodoCheck.vue'
-import { mapState } from 'vuex'
-
+import {  mapState } from 'vuex'
 export default {
     name: 'TodoList',
     components: {
         BaseCheck,
     },
     computed: {
-        ...mapState({
-            StateItems: 'writeList'
-        }),
+       ...mapState({
+            StateItems: state => state.myTodo.writeList
+      })
     },
     methods: {
       clearItem(val) {
-        window.alert( `${val} 삭제` )
+             this.$store.dispatch('removeList',val)
+      },
+
+      changeFormat(t) {
+        const date = new Date(t);
+            const year = date.getFullYear();
+            const month = "0"+(date.getMonth()+1);
+            const day = "0"+date.getDate();
+            const hour = "0"+date.getHours();
+            const minute = "0"+date.getMinutes();
+            const second = "0"+date.getSeconds();
+            return year +"-"+month.substr(-2)+"-"+day.substr(-2)+ " " +hour.substr(-2) + ":" + minute.substr(-2) + ":" + second.substr(-2);
       }
     },
 }
@@ -52,7 +62,6 @@ export default {
         .btn-del {
           position: relative;
            @include icon-x();
-          // @include icon-x(10, #999, top);
         }
         .item-date {
           position: absolute;

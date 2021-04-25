@@ -1,4 +1,4 @@
-export default class MyTodoList {
+export default class MyTodoListWrite {
       constructor(content){
             this.content = content;
       }
@@ -11,5 +11,9 @@ export default class MyTodoList {
                   writeDate : this.getWriteDate(), //쓴 날짜
                   isComplete : false //완료 여부 true면 완료,false면 미완료
             })
+      }
+      setLocalStorage(){
+            const key = this.getWriteDate()+"-w"
+            localStorage.setItem(key, this.writeMydoList())
       }
 }
