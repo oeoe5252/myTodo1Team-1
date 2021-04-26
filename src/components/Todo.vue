@@ -1,5 +1,5 @@
 <template>
-    <section class="section-todo" v-bind:class="{ dark : displayMode }">
+    <section class="visual" v-bind:class="{ dark : displayMode }">
         <div class="inner">
             <TodoHeader/>
             <TodoIntro/>
@@ -32,11 +32,10 @@
 </script>
 
 <style lang="scss" scoped>
-    .section-todo {
+    .visual {
         position: relative;
         background: url('~@/assets/images/bg-morning.jpg') center no-repeat;
         background-size: cover;
-
         &.dark {
             background: url('~@/assets/images/bg-evening.jpg') center no-repeat;
             background-size: cover;
