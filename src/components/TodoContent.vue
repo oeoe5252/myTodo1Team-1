@@ -23,7 +23,7 @@ export default {
 </script>
 <style lang="scss">
     body {
-        background-color: #fefefe;
+        background-color: #f5f5f5;
     }
     .inner {
         max-width: 720px;

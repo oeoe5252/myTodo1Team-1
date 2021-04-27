@@ -183,7 +183,7 @@ input[type=text]::-ms-clear {
 }
 
 select {
-  border: none;
+  border: 1px solid #ddd;
   background: #fff;
   box-sizing: border-box;
   -webkit-appearance: none;
@@ -195,9 +195,9 @@ select {
   font-family: "Montserrat", "Nanum Gothic", sans-serif;
   color: #333;
   width: 100%;
-  height: 1rem;
-  line-height: 1rem;
-  font-size: 16px;
+  height: 40px;
+  font-size: 14px;
+  padding-left: 10px;
 }
 
 select::-ms-expand {
@@ -228,6 +228,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background: none;
 }
 
 button:focus,
