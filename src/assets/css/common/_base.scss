@@ -124,3 +124,7 @@ textarea:focus::-ms-input-placeholder {color:transparent}
 
 /* hidden */
 .sr-only { display: block; overflow: hidden; position: absolute; left: -9999px; width: 1px; height: 1px; font-size: 0; line-height: 0; text-indent: -9999px; }
+
+::-webkit-scrollbar {width:10px;height:10px;display:none;}
+::-webkit-scrollbar-track {background: #f1f1f1}
+::-webkit-scrollbar-thumb {background:#a7a7a7}

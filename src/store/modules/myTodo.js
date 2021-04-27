@@ -21,7 +21,7 @@ const getters = {
             let count = 0;
             if(state.writeList.length>0){
                   state.writeList.forEach(item=>{
-                        if(!item.isComplete) count++
+                        if(item.isComplete) count++
                   })
             }
             return count

@@ -1,6 +1,6 @@
 <template>
     <div class="form-item">
-        <input type="text" placeholder="Enter your task here" v-model="todoData" v-on:keyup.enter="addList()" />
+        <input type="text" placeholder="Enter your task here" v-model="todoData" v-on:keypress.enter="addList()" />
         <button @click="addList" class="btn"><i class="ico-arr"></i>확인</button>
     </div>
 </template>

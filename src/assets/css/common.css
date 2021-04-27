@@ -183,8 +183,7 @@ input[type=text]::-ms-clear {
 }
 
 select {
-  border: 1px solid #ddd;
-  padding: 0 0 0 20px;
+  border: none;
   background: #fff;
   box-sizing: border-box;
   -webkit-appearance: none;
@@ -194,10 +193,10 @@ select {
   outline: none;
   font-weight: 400;
   font-family: "Montserrat", "Nanum Gothic", sans-serif;
-  color: #ddd;
+  color: #333;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 1rem;
+  line-height: 1rem;
   font-size: 16px;
 }
 
@@ -352,10 +351,31 @@ textarea:focus::-ms-input-placeholder {
   color: transparent;
 }
 
-.inner {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* hidden */
+.sr-only {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a7a7a7;
 }
 
 /*# sourceMappingURL=common.css.map */
