@@ -7,32 +7,43 @@
                 <option value="desc">내림차순</option>
             </select>
         </div>
-        <button class="btn-allclear" @click="clearAll"> Clear All </button>
+        <button class="btn-allclear" @click="clearAll"> Clear All</button>
     </div>
 </template>
 <script>
 
-export default {
-    name: 'TodoUtil',
-    data(){
-          return{
-            sort : this.$store.getters.getSort
-          }
-    },
-    methods: {
-        onChangeSort() {
-             this.$store.dispatch('updateSort',this.sort)
+    export default {
+        name: 'TodoUtil',
+        data() {
+            return {
+                sort: this.$store.getters.getSort
+            }
         },
-        clearAll() {
-           this.$store.dispatch('removeAllList')
+        methods: {
+            onChangeSort() {
+                this.$store.dispatch('updateSort', this.sort)
+            },
+            clearAll() {
+                this.$store.dispatch('removeAllList')
+            }
         }
     }
-}
 </script>
 
 <style lang="scss">
     .todo-util {
         @include displayFlex($valFlexBetweenCenter...);
         padding: $defaultSpace 0;
+        .input-select {
+            position: relative;
+            width: 100px;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                @include icon-arr(8, #111, bottom, 1)
+            }
+        }
     }
 </style>

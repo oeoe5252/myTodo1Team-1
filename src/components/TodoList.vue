@@ -1,10 +1,11 @@
 <template>
     <ul class="todo-list">
         <li v-for="(item, index) of StateItems" :key="index">
-            <BaseCheck :name="`id-${item.writeDate}`" :id="`id-${item.writeDate}`" :msg="item.content" :item="item"></BaseCheck>
+            <BaseCheck :name="`id-${item.writeDate}`" :id="`id-${item.writeDate}`" :msg="item.content"
+                       :item="item"></BaseCheck>
             <div class="util-wrap">
-              <button class="btn-del" @click="clearItem(item.writeDate)"></button>
-              <span class="item-date">
+                <button class="btn-del" @click="clearItem(item.writeDate)"></button>
+                <span class="item-date">
                 {{changeFormat(item.writeDate)}}
               </span>
             </div>
@@ -12,35 +13,36 @@
     </ul>
 </template>
 <script>
-import BaseCheck from '@/components/TodoCheck.vue'
-import {  mapState } from 'vuex'
-export default {
-    name: 'TodoList',
-    components: {
-        BaseCheck,
-    },
-    computed: {
-       ...mapState({
-            StateItems: state => state.myTodo.writeList
-      })
-    },
-    methods: {
-      clearItem(val) {
-             this.$store.dispatch('removeList',val)
-      },
+    import BaseCheck from '@/components/TodoCheck.vue'
+    import {mapState} from 'vuex'
 
-      changeFormat(t) {
-        const date = new Date(t);
-            const year = date.getFullYear();
-            const month = "0"+(date.getMonth()+1);
-            const day = "0"+date.getDate();
-            const hour = "0"+date.getHours();
-            const minute = "0"+date.getMinutes();
-            const second = "0"+date.getSeconds();
-            return year +"-"+month.substr(-2)+"-"+day.substr(-2)+ " " +hour.substr(-2) + ":" + minute.substr(-2) + ":" + second.substr(-2);
-      }
-    },
-}
+    export default {
+        name: 'TodoList',
+        components: {
+            BaseCheck,
+        },
+        computed: {
+            ...mapState({
+                StateItems: state => state.myTodo.writeList
+            })
+        },
+        methods: {
+            clearItem(val) {
+                this.$store.dispatch('removeList', val)
+            },
+
+            changeFormat(t) {
+                const date = new Date(t);
+                const year = date.getFullYear();
+                const month = "0" + (date.getMonth() + 1);
+                const day = "0" + date.getDate();
+                const hour = "0" + date.getHours();
+                const minute = "0" + date.getMinutes();
+                const second = "0" + date.getSeconds();
+                return year + "-" + month.substr(-2) + "-" + day.substr(-2) + " " + hour.substr(-2) + ":" + minute.substr(-2) + ":" + second.substr(-2);
+            }
+        },
+    }
 </script>
 
 <style lang="scss">
@@ -55,19 +57,21 @@ export default {
             padding: 1rem;
 
             .util-wrap {
-              color: $gray9;
-              margin-left: 10px;
+                color: $gray9;
+                margin-left: 10px;
             }
         }
         .btn-del {
-          position: relative;
-           @include icon-x();
+            position: relative;
+            @include itemSize(15px, 15px);
+            @include icon-x(14, $gray9, 1);
+            @include displayFlex()
         }
         .item-date {
-          position: absolute;
-          bottom: 0.5rem;
-          right: 1rem;
-          font-size: 0.5rem;
+            position: absolute;
+            bottom: 0.7rem;
+            right: 1rem;
+            font-size: 0.5rem;
         }
     }
 </style>
