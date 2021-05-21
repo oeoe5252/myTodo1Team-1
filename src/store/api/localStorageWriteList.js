@@ -11,7 +11,7 @@ export default {
                         }
                   }
             }
-
+            //[D] id값으로 정렬 변경
             if(sort=="asc"){
                   return writeList.sort(function(a,b){
                         return a.writeDate-b.writeDate;

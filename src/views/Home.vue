@@ -20,8 +20,10 @@ export default {
       computed : mapState({
                   writeLists : state => state.writeList
       }),
+      /*
       created(){
             this.$store.dispatch('getAllWriteList')
       },
+      */
 };
 </script>

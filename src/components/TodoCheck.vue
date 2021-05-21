@@ -36,20 +36,15 @@
         },
         methods: {
             onChangeChecked: function (e) {
-                let playload = ""
-                if (e.target.checked) {
-                    // state 상태 변경 필요
-                    playload = {
-                        key: this.item.writeDate,
-                        val: true
-                    }
-                } else {
-                    playload = {
-                        key: this.item.writeDate,
-                        val: false
-                    }
+                let payload = {
+                      key: this.item.writeDate
                 }
-                this.$store.dispatch('updateList', playload)
+                if (e.target.checked) {
+                    payload.val = true;
+                } else {
+                    payload.val = false;
+                }
+                this.$store.dispatch('updateList', payload)
             }
         }
     }

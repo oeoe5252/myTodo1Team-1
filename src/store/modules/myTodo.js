@@ -1,6 +1,7 @@
 import lsw from "../api/localStorageWriteList"
 
 const state = () => ({
+      deviceId : "vue1",//[D] deviceid값 우선 이걸로 고정, 변경해도 됨
       writeList : [],
       sort : "asc"
 })
@@ -20,8 +21,8 @@ const getters = {
       countOfComplete: state => {
             let count = 0;
             if(state.writeList.length>0){
-                  state.writeList.forEach(item=>{
-                        if(item.isComplete) count++
+                  state.writeList.filter(item=>{
+                        if(item.state==1) count++
                   })
             }
             return count
@@ -44,8 +45,8 @@ const actions = {
             //localstorage에 추가하기
             commit('addList', lsw.getList(state.sort))
       },
-      updateList :  ({ commit,state }, playload) => {
-            lsw.updateList(playload.key,playload.val)
+      updateList :  ({ commit,state }, payload) => {
+            lsw.updateList(payload.key,payload.val)
             commit('setWriteList',lsw.getList(state.sort))
       },
       removeList: ({ commit,state }, key) => {

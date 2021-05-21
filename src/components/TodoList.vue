@@ -1,12 +1,12 @@
 <template>
     <ul class="todo-list">
         <li v-for="(item, index) of StateItems" :key="index">
-            <BaseCheck :name="`id-${item.writeDate}`" :id="`id-${item.writeDate}`" :msg="item.content"
+            <BaseCheck :name="`id-${item.created_at}`" :id="`id-${item.created_at}`" :msg="item.text"
                        :item="item"></BaseCheck>
             <div class="util-wrap">
-                <button class="btn-del" @click="clearItem(item.writeDate)"></button>
+                <button class="btn-del" @click="clearItem(item.created_at)"></button>
                 <span class="item-date">
-                {{changeFormat(item.writeDate)}}
+                {{changeFormat(item.created_at)}}
               </span>
             </div>
         </li>
@@ -30,7 +30,7 @@
             clearItem(val) {
                 this.$store.dispatch('removeList', val)
             },
-
+            //axios로 변경해야해서 삭제필요
             changeFormat(t) {
                 const date = new Date(t);
                 const year = date.getFullYear();
