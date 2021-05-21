@@ -4,17 +4,17 @@
             :id="id"
             :name="name"
             type="checkbox"
-            :checked="item.isComplete"
+            :checked="item.state == 2"
             @change="onChangeChecked"/>
-        <lable
+        <label
             :for="id"
             class="label-box"
-            :class="[{ done: item.isComplete }]"></lable>
+            :class="[{ done: item.state == 2 }]"></label>
         <label
             :for="id"
             class="label-legend"
-            :class="[{ done: item.isComplete }]">
-            <span>{{ msg }}</span>
+            :class="[{ done: item.state == 2 }]">
+            <span>{{ item.state }} - {{ msg }}</span>
         </label>
     </div>
 </template>
@@ -33,21 +33,20 @@
             },
             item: {
                 type: Object
+            },
+            itemIdx: {
+                type: Number
             }
         },
         methods: {
-            onChangeChecked: function (e) {
-                let payload = {
-                    key: this.item.writeDate
-                }
+            onChangeChecked: function(e) {
+                console.log('---chk click', e.target.checked)
 
                 if (e.target.checked) {
-                    payload.val = true;
+                    this.$store.dispatch('updateList', { item: this.item, idx: this.itemIdx, state: 2})
                 } else {
-                    payload.val = false;
+                    this.$store.dispatch('updateList', { item: this.item, idx: this.itemIdx, state: 1})
                 }
-
-                this.$store.dispatch('updateList', payload)
             }
         }
     }

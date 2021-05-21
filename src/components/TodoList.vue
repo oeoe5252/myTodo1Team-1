@@ -5,9 +5,10 @@
                 :name="`id-${item.created_at}`"
                 :id="`id-${item.created_at}`"
                 :msg="item.text"
+                :itemIdx="index"
                 :item="item"></BaseCheck>
             <div class="util-wrap">
-                <button class="btn-del" @click="clearItem(item.created_at)"></button>
+                <button class="btn-del" @click="clearItem( item.id, index )"></button>
                 <span class="item-date"> {{ changeFormat(item.created_at) }} </span>
             </div>
         </li>
@@ -28,8 +29,8 @@
             })
         },
         methods: {
-            clearItem(val) {
-                this.$store.dispatch('removeList', val)
+            clearItem(tmpId, tmpIdx) {
+                this.$store.dispatch('removeList', {id: tmpId, idx: tmpIdx})
             },
             //axios로 변경해야해서 삭제필요
             changeFormat(t) {
