@@ -10,12 +10,12 @@
 </template>
 
 <script>
-    import NowDate from "@/components/module/NowDate.js"
+    import NowDate from '@/components/module/NowDate.js'
 
-    const nowDate = new NowDate();
+    const nowDate = new NowDate()
 
     export default {
-        name: "TodoIntro",
+        name: 'TodoIntro',
         computed: {
             taskCount() {
                 return this.$store.getters.countOfComplete
@@ -30,7 +30,7 @@
             }
         },
         mounted() {
-            this.hello = nowDate.getTransHour();
+            this.hello = nowDate.getTransHour()
         }
     }
 </script>

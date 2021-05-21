@@ -1,20 +1,21 @@
 <template>
     <div class="input-check type1">
         <input
-                :id="id"
-                :name="name"
-                type="checkbox"
-                :checked="item.isComplete"
-                @change="onChangeChecked"/>
+            :id="id"
+            :name="name"
+            type="checkbox"
+            :checked="item.isComplete"
+            @change="onChangeChecked"/>
         <lable
-                :for="id"
-                class="label-box"
-                :class="[{done: item.isComplete}]"></lable>
+            :for="id"
+            class="label-box"
+            :class="[{ done: item.isComplete }]"></lable>
         <label
-                :for="id"
-                class="label-legend"
-                :class="[{done: item.isComplete}]">
-            <span>{{msg}}</span> </label>
+            :for="id"
+            class="label-legend"
+            :class="[{ done: item.isComplete }]">
+            <span>{{ msg }}</span>
+        </label>
     </div>
 </template>
 <script>
@@ -37,13 +38,15 @@
         methods: {
             onChangeChecked: function (e) {
                 let payload = {
-                      key: this.item.writeDate
+                    key: this.item.writeDate
                 }
+
                 if (e.target.checked) {
                     payload.val = true;
                 } else {
                     payload.val = false;
                 }
+
                 this.$store.dispatch('updateList', payload)
             }
         }

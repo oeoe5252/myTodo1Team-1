@@ -6,10 +6,10 @@
 </template>
 
 <script>
-    import MyTodoListWrite from "@/components/module/MyTodoListWrite.js" //axios로 변경해야해서 삭제필요
+    import MyTodoListWrite from '@/components/module/MyTodoListWrite.js' //axios로 변경해야해서 삭제필요
 
     export default {
-        name: "TodoInput",
+        name: 'TodoInput',
         data() {
             return {
                 todoData: '',
@@ -19,15 +19,15 @@
             addList() {
                 if (this.todoData !== '') {
                    // [D]데이터값 전송
-                    new MyTodoListWrite(this.todoData).setLocalStorage(); //axios로 변경해야해서 삭제필요
+                    new MyTodoListWrite(this.todoData).setLocalStorage() //axios로 변경해야해서 삭제필요
                     this.$store.dispatch('addList')
-                    this.clearInput();
+                    this.clearInput()
                 } else {
                     alert('할 일을 입력해주세요.')
                 }
             },
             clearInput() {
-                this.todoData = '';
+                this.todoData = ''
             }
         }
     }
